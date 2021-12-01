@@ -1,4 +1,6 @@
 # Calculate the number of increases and decreases.
+from typing import List
+
 from puzzle_input import measurement_report, test_report
 
 TOTAL_EQUAL = 0
@@ -32,7 +34,7 @@ def calc_diff(
         print("Something is wrong dumdum!")
 
 
-previous_window = []
+previous_window: List[int] = []
 report = measurement_report
 
 for i in range(len(report)):

@@ -32,7 +32,6 @@ def calc_diff(
         print("Something is wrong dumdum!")
 
 
-previous_window = []
 report = measurement_report
 
 for i in range(len(report)):
@@ -40,8 +39,8 @@ for i in range(len(report)):
         None  # First entry knows no diff
     else:
         calc_diff(
-            current_measure=measurement_report[i],
-            previous_measure=measurement_report[i - 1],
+            current_measure=report[i],
+            previous_measure=report[i - 1],
         )
 
 print(

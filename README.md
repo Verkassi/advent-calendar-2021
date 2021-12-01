@@ -28,7 +28,7 @@ This repository is in no way meant to show how it is done, but purely for sharin
       ~~~~~~~~         '""""`------'  `w---w`     `------------'
 
 ------------------------------------------------
-This ASCII pic can be found at: 
+This ASCII pic can be found at:
 https://asciiart.website/index.php?art=holiday/christmas/trees
 ```
 
