@@ -34,9 +34,13 @@ https://asciiart.website/index.php?art=holiday/christmas/trees
 
 ## Description
 Solving code for 2021 advent calendar from adventofcode.com
+| year |       adventofcode URL        |
+|:----:|:-----------------------------:|
+| 2021 | https://adventofcode.com/2021 |
+| 2020 | https://adventofcode.com/2020 |
 
 ## Running the code
 - Check out this repository
 - Change directory to the day you want to solve
-- Run the puzzle you want to solve
-    - Example: `python puzzle_1.py`
+- Run the solver for that day
+    - Example: `python solver.py`
