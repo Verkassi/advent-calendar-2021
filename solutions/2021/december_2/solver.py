@@ -2,10 +2,12 @@ from puzzle_input import aoc_input, tst_input
 
 
 def solve_puzzle_1(in_list: list) -> None:
-    # Puzzle 1 logic:
+    # Puzzle logic:
     # forward = + horizontal
     # down    = + depth
     # up      = - depth
+    # Answer:
+    # sum of depth and horizontal position = 150
 
     cur_depth = 0
     cur_horizontal = 0
@@ -32,10 +34,12 @@ def solve_puzzle_1(in_list: list) -> None:
 
 
 def solve_puzzle_2(in_list: list) -> None:
-    # Puzzle 2 logic:
+    # Puzzle logic:
     # forward = + horizontal | depth * aim
     # down    = + aim
     # up      = - aim
+    # Answer:
+    # sum of depth and horizontal position = 900
 
     cur_depth = 0
     cur_horizontal = 0
@@ -64,5 +68,5 @@ def solve_puzzle_2(in_list: list) -> None:
 
 
 if __name__ == "__main__":
-    solve_puzzle_1(aoc_input)
-    solve_puzzle_2(aoc_input)
+    solve_puzzle_1(tst_input)
+    solve_puzzle_2(tst_input)
