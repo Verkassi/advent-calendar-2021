@@ -1,7 +1,7 @@
 from puzzle_input import aoc_input, tst_input
 
 
-def solve_puzzle_1(in_list: list):
+def solve_puzzle_1(in_list: list) -> None:
     # Find two entries that add up to 2020
     # Puzzle logic:
     # 1721 <-
@@ -26,11 +26,12 @@ def solve_puzzle_1(in_list: list):
 
     print("---------------- PUZZLE TWO SOLUTION ----------------")
     print(
-        f"Entries {cur_entry} and {matching_entry} become 2020, multiplying them gives {cur_entry*matching_entry}")
+        f"Entries {cur_entry} and {matching_entry} become 2020, multiplying them gives {cur_entry*matching_entry}"
+    )
     print("-----------------------------------------------------")
 
 
-def solve_puzzle_2(in_list: list):
+def solve_puzzle_2(in_list: list) -> None:
     # Find three entries that add up to 2020
     # Puzzle logic:
     # 1721
@@ -45,14 +46,23 @@ def solve_puzzle_2(in_list: list):
         for j in range(len(in_list)):
             first_matching_entry = in_list[j]
             for k in range(len(in_list)):
-              second_matching_entry = in_list[k]
-              if i == j or i == k or j == k:
-                  continue  # Don't add the same entries
-              else:
-                  if sum([cur_entry, first_matching_entry, second_matching_entry]) == 2020:
-                      break
+                second_matching_entry = in_list[k]
+                if i == j or i == k or j == k:
+                    continue  # Don't add the same entries
+                else:
+                    if (
+                        sum(
+                            [
+                                cur_entry,
+                                first_matching_entry,
+                                second_matching_entry,
+                            ]
+                        )
+                        == 2020
+                    ):
+                        break
             else:
-              continue
+                continue
             break
         else:
             continue
@@ -60,9 +70,9 @@ def solve_puzzle_2(in_list: list):
 
     print("---------------- PUZZLE TWO SOLUTION ----------------")
     print(
-        f"Entries {cur_entry}, {first_matching_entry} and {second_matching_entry} become 2020, multiplying them gives {cur_entry*first_matching_entry*second_matching_entry}")
+        f"Entries {cur_entry}, {first_matching_entry} and {second_matching_entry} become 2020, multiplying them gives {cur_entry*first_matching_entry*second_matching_entry}"
+    )
     print("-----------------------------------------------------")
-
 
 
 if __name__ == "__main__":

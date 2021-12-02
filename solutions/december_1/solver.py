@@ -1,7 +1,9 @@
+from typing import List
+
 from puzzle_input import aoc_input, tst_input
 
 
-def solve_puzzle_1(in_list: list):
+def solve_puzzle_1(in_list: list) -> None:
     # Puzzle one logic
     # 199 (N/A - no previous measurement)
     # 200 (increased)
@@ -17,7 +19,7 @@ def solve_puzzle_1(in_list: list):
     tot_increase = 0
     tot_decrease = 0
     for i in range(len(in_list)):
-        cur_meas = in_list[i]
+        cur_meas: int = in_list[i]
         if i == 0:
             None  # First entry knows no diff
         else:
@@ -30,15 +32,16 @@ def solve_puzzle_1(in_list: list):
                 tot_decrease += 1
             else:
                 raise ValueError("Something is wrong dumdum!")
-        prev_meas = cur_meas
+        prev_meas: int = cur_meas
 
     print("---------------- PUZZLE ONE SOLUTION ----------------")
     print(
-        f"increases: {tot_increase}, decreases: {tot_decrease}, equals: {tot_equals}")
+        f"increases: {tot_increase}, decreases: {tot_decrease}, equals: {tot_equals}"
+    )
     print("-----------------------------------------------------")
 
 
-def solve_puzzle_2(in_list: list):
+def solve_puzzle_2(in_list: list) -> None:
     # Puzzle two logic
     # 199  A                  | A: 607 (N/A - no previous sum)
     # 200  A B                | B: 618 (increased)
@@ -49,15 +52,15 @@ def solve_puzzle_2(in_list: list):
     # 240          E F G      | G: 769 (increased)
     # 269            F G H    | H: 792 (increased)
     # 260              G H    | I: BREAKS
-    # 263                H    | 
+    # 263                H    |
     tot_increase = 0
     tot_decrease = 0
     tot_equals = 0
     for i in range(len(in_list)):
         if i >= (len(in_list) - 2):
-            break # Last entries cant be used to create a 3 wide window
+            break  # Last entries cant be used to create a 3 wide window
         else:
-            cur_meas = [
+            cur_meas: List[int] = [
                 in_list[i],
                 in_list[i + 1],
                 in_list[i + 2],
@@ -74,10 +77,11 @@ def solve_puzzle_2(in_list: list):
                     tot_decrease += 1
                 else:
                     raise ValueError("Something is wrong dumdum!")
-        prev_meas = cur_meas  # Save for next iteration
+        prev_meas: List[int] = cur_meas  # Save for next iteration
     print("---------------- PUZZLE TWO SOLUTION ----------------")
     print(
-        f"increases: {tot_increase}, decreases: {tot_decrease}, equals: {tot_equals}")
+        f"increases: {tot_increase}, decreases: {tot_decrease}, equals: {tot_equals}"
+    )
     print("-----------------------------------------------------")
 
 

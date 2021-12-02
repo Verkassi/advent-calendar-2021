@@ -18,7 +18,7 @@ def solve_puzzle_1(in_list: list) -> None:
         if text_part == "down":
             cur_depth = cur_depth + addition
         elif text_part == "up":
-            addition = 0-addition  # Make negative
+            addition = 0 - addition  # Make negative
             cur_depth = cur_depth + addition
         elif text_part == "forward":
             cur_horizontal = cur_horizontal + (addition)
@@ -49,7 +49,7 @@ def solve_puzzle_2(in_list: list) -> None:
         if text_part == "down":
             cur_aim = cur_aim + addition
         elif text_part == "up":
-            addition = 0-addition  # Make negative
+            addition = 0 - addition  # Make negative
             cur_aim = cur_aim + addition
         elif text_part == "forward":
             cur_horizontal = cur_horizontal + (addition)
