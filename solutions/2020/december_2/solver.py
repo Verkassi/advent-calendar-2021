@@ -99,4 +99,3 @@ def solve_puzzle_2(in_list: list) -> None:
 if __name__ == "__main__":
     solve_puzzle_1(aoc_input)
     solve_puzzle_2(aoc_input)
-    pass
