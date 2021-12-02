@@ -1,4 +1,4 @@
-measurement_report = [
+aoc_input = [
     171,
     154,
     155,
@@ -2000,3 +2000,5 @@ measurement_report = [
     1176,
     1199,
 ]
+tst_input = [
+  199,200,208,210,200,207,240,269,260,263]
