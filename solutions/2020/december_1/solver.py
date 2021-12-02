@@ -24,7 +24,7 @@ def solve_puzzle_1(in_list: list) -> None:
             continue
         break
 
-    print("---------------- PUZZLE TWO SOLUTION ----------------")
+    print("---------------- PUZZLE ONE SOLUTION ----------------")
     print(
         f"Entries {cur_entry} and {matching_entry} become 2020, multiplying them gives {cur_entry*matching_entry}"
     )
