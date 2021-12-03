@@ -9,7 +9,8 @@ def solve_puzzle_1(in_list: list) -> None:
     # 1-3 a: abcde <- between 1 and 3 a's
     # 1-3 b: cdefg <- between 1 and 3 b's
     # 2-9 c: ccccccccc <- between 2 and 9 c's
-    # Awnser: 2 are valid, second entry is invalid
+    # Answer:
+    # 2 are valid, second entry is invalid
     valids = 0
     invalids = 0
     for entry in in_list:
@@ -44,7 +45,8 @@ def solve_puzzle_2(in_list: list) -> None:
     # 1-3 a: abcde is valid: position 1 contains a and position 3 does not.
     # 1-3 b: cdefg is invalid: neither position 1 nor position 3 contains b.
     # 2-9 c: ccccccccc is invalid: both position 2 and position 9 contain c.
-    # Awnser = number of valids = 1
+    # Answer:
+    # Number of valids = 1
     valids = 0
     invalids = 0
     for entry in in_list:

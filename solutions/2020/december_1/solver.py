@@ -1,6 +1,5 @@
 from puzzle_input import aoc_input, tst_input
 
-
 def solve_puzzle_1(in_list: list) -> None:
     # Find two entries that add up to 2020
     # Puzzle logic:
@@ -10,7 +9,8 @@ def solve_puzzle_1(in_list: list) -> None:
     # 299 <-
     # 675
     # 1456
-    # Awnser = 1721 * 299 = 514579
+    # Answer:
+    # 1721 * 299 = 514579
     for i in range(len(in_list)):
         cur_entry = in_list[i]
         for j in range(len(in_list)):
@@ -40,7 +40,8 @@ def solve_puzzle_2(in_list: list) -> None:
     # 299
     # 675 <-
     # 1456
-    # Awnser = 1721 * 299 = 514579
+    # Answer:
+    # 1721 * 299 = 514579
     for i in range(len(in_list)):
         cur_entry = in_list[i]
         for j in range(len(in_list)):

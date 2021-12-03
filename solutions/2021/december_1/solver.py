@@ -4,7 +4,7 @@ from puzzle_input import aoc_input, tst_input
 
 
 def solve_puzzle_1(in_list: list) -> None:
-    # Puzzle one logic
+    # Puzzle logic:
     # 199 (N/A - no previous measurement)
     # 200 (increased)
     # 208 (increased)
@@ -15,6 +15,8 @@ def solve_puzzle_1(in_list: list) -> None:
     # 269 (increased)
     # 260 (decreased)
     # 263 (increased)
+    # Answer:
+    # increases = 7
     tot_equals = 0
     tot_increase = 0
     tot_decrease = 0
@@ -42,7 +44,7 @@ def solve_puzzle_1(in_list: list) -> None:
 
 
 def solve_puzzle_2(in_list: list) -> None:
-    # Puzzle two logic
+    # Puzzle logic:
     # 199  A                  | A: 607 (N/A - no previous sum)
     # 200  A B                | B: 618 (increased)
     # 208  A B C              | C: 618 (no change)
@@ -53,6 +55,8 @@ def solve_puzzle_2(in_list: list) -> None:
     # 269            F G H    | H: 792 (increased)
     # 260              G H    | I: BREAKS
     # 263                H    |
+    # Answer:
+    # increases = 5
     tot_increase = 0
     tot_decrease = 0
     tot_equals = 0

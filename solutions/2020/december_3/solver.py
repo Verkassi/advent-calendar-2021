@@ -35,7 +35,11 @@ def solve_puzzle_1(in_list: list) -> None:
     # 8)  #.##...#...#.##...#...#.X#...#...#.##...#...#.##...#...#.##...#...
     # 9)  #...##....##...##....##...#X....##...##....##...##....##...##....#
     # 10) .#..#...#.#.#..#...#.#.#..#...X.#.#..#...#.#.#..#...#.#.#..#...#.#  --->
-    # Awnser: S = start, O = open, X = tree -> you encounter 7 trees
+    # Answer:
+    # S = start,
+    # O = open,
+    # X = tree 
+    # You encounter 7 trees
 
     (no_trees, no_opens) = traverse_slope(in_list, 3, 1)
 
@@ -52,7 +56,8 @@ def solve_puzzle_2(in_list: list) -> None:
     # Right 5, down 1. -> 3 trees
     # Right 7, down 1. -> 4 trees
     # Right 1, down 2. -> 2 trees
-    # Awnser 2*7*3*4*2 = 336
+    # Answer:
+    # 2*7*3*4*2 = 336
 
     x_y_combinations = [
         [1,1],
