@@ -1,5 +1,7 @@
-from puzzle_input import aoc_input, tst_input
 import collections
+
+from puzzle_input import aoc_input, tst_input
+
 
 def solve_puzzle_1(in_list: list) -> None:
     # Puzzle logic:
@@ -19,18 +21,18 @@ def solve_puzzle_1(in_list: list) -> None:
     #   Gamma:      10110 -> 22
     #   Epsilon:    01001 -> 9
     #   power:      22 * 9 = 198
-    transposed_list=list(map(list, zip(*in_list)))
-    gamma_rate_bn_lst=[]
-    epsilon_rate_bn_lst=[]
+    transposed_list = list(map(list, zip(*in_list)))
+    gamma_rate_bn_lst = []
+    epsilon_rate_bn_lst = []
 
     for i in range(len(transposed_list)):
-        counter=collections.Counter(transposed_list[i])
+        counter = collections.Counter(transposed_list[i])
         gamma_rate_bn_lst.append(counter.most_common(1)[0][0])
         epsilon_rate_bn_lst.append(counter.most_common()[1][0])
 
     gamma_rate = int("".join(gamma_rate_bn_lst), 2)
     epsilon_rate = int("".join(epsilon_rate_bn_lst), 2)
-    power = gamma_rate*epsilon_rate
+    power = gamma_rate * epsilon_rate
     print("---------------- PUZZLE ONE SOLUTION ----------------")
     print(f"Gamma: {gamma_rate}, Epsilon: {epsilon_rate}, Power: {power}")
     print("-----------------------------------------------------")
@@ -51,25 +53,24 @@ def solve_puzzle_2(in_list: list) -> None:
     # LSR: 230
 
     def find_commons(inputlist: list) -> int:
-        counter=collections.Counter(inputlist)
+        counter = collections.Counter(inputlist)
         commons = counter.most_common()
         # Check if entries are equal
         if commons[0][1] == commons[1][1]:
             return ("equal", None)
         else:
             return (commons[0][0], commons[1][0])
-            
 
-    def calc_matching_bitstring(input_list: list,
-                                equals_handler: str,
-                                calc_type: str) -> str:
+    def calc_matching_bitstring(
+        input_list: list, equals_handler: str, calc_type: str
+    ) -> str:
         row_width = len(input_list[0])
         tmp_in_list = input_list
 
         for y in range(row_width):
             if len(tmp_in_list) == 1:
                 break
-            transposed_list=list(map(list, zip(*tmp_in_list)))
+            transposed_list = list(map(list, zip(*tmp_in_list)))
             high_cur_mc, low_cur_mc = find_commons(transposed_list[y])
             # handle equals per case
             if high_cur_mc == "equal":
@@ -79,14 +80,24 @@ def solve_puzzle_2(in_list: list) -> None:
                     cur_mc = high_cur_mc
                 else:
                     cur_mc = low_cur_mc
-            tmp_in_list = [ tmp_in_list[idx] for idx, entry in enumerate(tmp_in_list) if entry[y] == cur_mc ]
+            tmp_in_list = [
+                tmp_in_list[idx]
+                for idx, entry in enumerate(tmp_in_list)
+                if entry[y] == cur_mc
+            ]
         return tmp_in_list[0]
 
-    oxygen_generator_rating = int(calc_matching_bitstring(in_list, "1", calc_type="oxy"), 2)
-    co2_scrubber_rating = int(calc_matching_bitstring(in_list, "0", calc_type="co2"), 2)
-    life_support_rating=oxygen_generator_rating*co2_scrubber_rating
+    oxygen_generator_rating = int(
+        calc_matching_bitstring(in_list, "1", calc_type="oxy"), 2
+    )
+    co2_scrubber_rating = int(
+        calc_matching_bitstring(in_list, "0", calc_type="co2"), 2
+    )
+    life_support_rating = oxygen_generator_rating * co2_scrubber_rating
     print("---------------- PUZZLE TWO SOLUTION ----------------")
-    print(f"Oxygen: {oxygen_generator_rating}, CO2: {co2_scrubber_rating}, Life Support Rate: {life_support_rating}")
+    print(
+        f"Oxygen: {oxygen_generator_rating}, CO2: {co2_scrubber_rating}, Life Support Rate: {life_support_rating}"
+    )
     print("-----------------------------------------------------")
 
 

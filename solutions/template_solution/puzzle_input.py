@@ -1,4 +1,2 @@
-aoc_input = [
-]
-tst_input = [
-]
+aoc_input = []
+tst_input = []

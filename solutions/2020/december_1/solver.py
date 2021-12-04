@@ -1,5 +1,6 @@
 from puzzle_input import aoc_input, tst_input
 
+
 def solve_puzzle_1(in_list: list) -> None:
     # Find two entries that add up to 2020
     # Puzzle logic:

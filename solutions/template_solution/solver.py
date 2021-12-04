@@ -3,9 +3,9 @@ from puzzle_input import aoc_input, tst_input
 
 def solve_puzzle_1(in_list: list) -> None:
     # Puzzle logic:
-    # 
+    #
     # Answer:
-    # 
+    #
 
     print("---------------- PUZZLE ONE SOLUTION ----------------")
     print(f"")
@@ -14,9 +14,9 @@ def solve_puzzle_1(in_list: list) -> None:
 
 def solve_puzzle_2(in_list: list) -> None:
     # Puzzle logic:
-    # 
+    #
     # Answer:
-    # 
+    #
 
     print("---------------- PUZZLE TWO SOLUTION ----------------")
     print(f"")

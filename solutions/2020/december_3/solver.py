@@ -1,23 +1,24 @@
-from typing import List
 import math
+from typing import List
+
 from puzzle_input import aoc_input, tst_input
 
 
 def traverse_slope(in_list: list, x_step: int, y_step: int):
-    no_trees=0
-    no_opens=0
-    iter_list = [ item for idx, item in enumerate(in_list) if idx%y_step == 0 ]
+    no_trees = 0
+    no_opens = 0
+    iter_list = [item for idx, item in enumerate(in_list) if idx % y_step == 0]
     for i in range(len(iter_list)):
         if i > 0:
-            current_row_pos = (x_step*i)
+            current_row_pos = x_step * i
             pos_in_index = current_row_pos % len(iter_list[i])
             row_list = []
             row_list[:0] = iter_list[i]
             if row_list[pos_in_index] == ".":
-                no_opens+=1
+                no_opens += 1
             else:
-                no_trees+=1
-        
+                no_trees += 1
+
     return (no_trees, no_opens)
 
 
@@ -38,7 +39,7 @@ def solve_puzzle_1(in_list: list) -> None:
     # Answer:
     # S = start,
     # O = open,
-    # X = tree 
+    # X = tree
     # You encounter 7 trees
 
     (no_trees, no_opens) = traverse_slope(in_list, 3, 1)
@@ -60,24 +61,30 @@ def solve_puzzle_2(in_list: list) -> None:
     # 2*7*3*4*2 = 336
 
     x_y_combinations = [
-        [1,1],
-        [3,1],
-        [5,1],
-        [7,1],
-        [1,2],
+        [1, 1],
+        [3, 1],
+        [5, 1],
+        [7, 1],
+        [1, 2],
     ]
 
     result_tree_list = []
     result_open_list = []
 
     for combination in x_y_combinations:
-        (no_trees, no_opens) = traverse_slope(in_list, combination[0], combination[1])
+        (no_trees, no_opens) = traverse_slope(
+            in_list, combination[0], combination[1]
+        )
         result_tree_list.append(no_trees)
         result_open_list.append(no_opens)
 
     print("---------------- PUZZLE TWO SOLUTION ----------------")
-    print(f"Number of trees: {result_tree_list}, number of opens: {result_open_list}.")
-    print(f"Product of all trees: {math.prod(result_tree_list)}, product of all opens: {math.prod(result_open_list)}")
+    print(
+        f"Number of trees: {result_tree_list}, number of opens: {result_open_list}."
+    )
+    print(
+        f"Product of all trees: {math.prod(result_tree_list)}, product of all opens: {math.prod(result_open_list)}"
+    )
     print("-----------------------------------------------------")
 
 
