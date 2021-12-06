@@ -1,7 +1,8 @@
-from typing import List
-from puzzle_input import aoc_input, tst_input
-from itertools import chain
 from copy import deepcopy
+from itertools import chain
+from typing import List
+
+from puzzle_input import aoc_input, tst_input
 
 
 def transform_input(raw_puzzle_in: str):
@@ -11,10 +12,11 @@ def transform_input(raw_puzzle_in: str):
             rtrn_row = row.replace("  ", " ").strip().split(" ")
             rtrn_card.append(rtrn_row)
         return rtrn_card
-    bingo_dict={}
+
+    bingo_dict = {}
     split_input = raw_puzzle_in.split("\n\n")
     # Get drawings
-    bingo_dict["drawings"]=split_input[0].split(",")
+    bingo_dict["drawings"] = split_input[0].split(",")
     # Build cards
     bingo_card_base = split_input[1:]
     bingo_cards = []
@@ -26,38 +28,38 @@ def transform_input(raw_puzzle_in: str):
 
 
 def get_check_string(card_size: int = 5):
-    check_strng=""
+    check_strng = ""
     for i in range(card_size):
-        check_strng+="!"
+        check_strng += "!"
     return check_strng
 
 
 def check_card(bngo_crd: List[List], card_size: int = 5):
     def check_rows(bngo_crd: List[List], card_size: int):
         for i in range(card_size):
-            check_list=[]
+            check_list = []
             for j in range(card_size):
                 check_list.append(bngo_crd[i][j][0])
             if "".join(check_list) == get_check_string(card_size):
-                return (True, (i,j))
-        return (False, (-1,-1))
-    
+                return (True, (i, j))
+        return (False, (-1, -1))
+
     def check_cols(bngo_crd: List[List], card_size: int):
         for j in range(card_size):
-            check_list=[]
+            check_list = []
             for i in range(card_size):
                 check_list.append(bngo_crd[i][j][0])
             if "".join(check_list) == get_check_string(card_size):
-                return (True, (j,i))
-        return (False, (-1,-1))
+                return (True, (j, i))
+        return (False, (-1, -1))
 
     def check_diagonals(bngo_crd: List[List], card_size: int):
-        diagonal_lst=[]
+        diagonal_lst = []
         for i in range(card_size):
             diagonal_lst.append(bngo_crd[i][i][0])
         if "".join(diagonal_lst) == get_check_string(card_size):
-            return (True, (i,i))
-        return (False, (-1,-1))
+            return (True, (i, i))
+        return (False, (-1, -1))
 
     # Check rows
     row_bingo = check_rows(bngo_crd=bngo_crd, card_size=card_size)
@@ -73,7 +75,7 @@ def check_card(bngo_crd: List[List], card_size: int = 5):
         return col_bingo
     elif diag_bingo[0]:
         return diag_bingo
-    return (False, (-1,-1))
+    return (False, (-1, -1))
 
 
 def cross_card(bngo_crd: List[List], card_size: int, cur_draw: str):
@@ -96,13 +98,17 @@ def solve_puzzle_1(puzzle_in) -> None:
 
     for drawing in drawings:
         for idx, card in enumerate(cards):
-            card = cross_card(bngo_crd=card, card_size=card_size, cur_draw=drawing)
+            card = cross_card(
+                bngo_crd=card, card_size=card_size, cur_draw=drawing
+            )
             crd_check = check_card(bngo_crd=card, card_size=card_size)
             if crd_check[0]:
                 card_nr = idx
                 winning_drawing = int(drawing)
                 flattened_card = chain.from_iterable(card)
-                rem_row = [ int(entry) for entry in flattened_card if entry[0] != "!" ]
+                rem_row = [
+                    int(entry) for entry in flattened_card if entry[0] != "!"
+                ]
                 break
         else:
             continue
@@ -124,7 +130,9 @@ def solve_puzzle_2(puzzle_in) -> None:
         for drawing in drawings:
             # print(f"Drawing number: {drawing}!")
             for idx, card in enumerate(cards):
-                card = cross_card(bngo_crd=card, card_size=card_size, cur_draw=drawing)
+                card = cross_card(
+                    bngo_crd=card, card_size=card_size, cur_draw=drawing
+                )
                 crd_check = check_card(bngo_crd=card, card_size=card_size)
                 if crd_check[0]:
                     # First see if there needs to be something removed
@@ -153,7 +161,7 @@ def solve_puzzle_2(puzzle_in) -> None:
     winning_drawing = result[2]
     last_winning_card = result[1]
     flattened_card = chain.from_iterable(last_winning_card)
-    rem_row = [ int(entry) for entry in flattened_card if entry[0] != "!" ]
+    rem_row = [int(entry) for entry in flattened_card if entry[0] != "!"]
 
     print("---------------- PUZZLE TWO SOLUTION ----------------")
     print(f"Playing with {len(cards)} cards, with size {card_size}")

@@ -1,7 +1,7 @@
 from puzzle_input import aoc_input, tst_input
 
 
-def solve_puzzle_1(in_list: list) -> None:
+def solve_puzzle_1(puzzle_in: list) -> None:
     # Puzzle logic:
     #
     # Answer:
@@ -12,7 +12,7 @@ def solve_puzzle_1(in_list: list) -> None:
     print("-----------------------------------------------------")
 
 
-def solve_puzzle_2(in_list: list) -> None:
+def solve_puzzle_2(puzzle_in: list) -> None:
     # Puzzle logic:
     #
     # Answer:
