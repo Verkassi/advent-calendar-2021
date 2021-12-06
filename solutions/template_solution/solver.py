@@ -1,6 +1,10 @@
 from puzzle_input import aoc_input, tst_input
 
 
+def transform_input(raw_puzzle_in: str):
+    return []
+
+
 def solve_puzzle_1(puzzle_in: list) -> None:
     # Puzzle logic:
     #
@@ -24,5 +28,6 @@ def solve_puzzle_2(puzzle_in: list) -> None:
 
 
 if __name__ == "__main__":
-    solve_puzzle_1(tst_input)
-    solve_puzzle_2(tst_input)
+    transfrmd_inp = transform_input(tst_input)
+    solve_puzzle_1(transfrmd_inp)
+    solve_puzzle_2(transfrmd_inp)
