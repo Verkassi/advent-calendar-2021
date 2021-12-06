@@ -1,9 +1,7 @@
-from typing import Any, List
-
 from puzzle_input import aoc_input, tst_input
 
 
-def transform_input(raw_puzzle_in: str) -> List[Any]:
+def transform_input(raw_puzzle_in: str):
     return []
 
 
