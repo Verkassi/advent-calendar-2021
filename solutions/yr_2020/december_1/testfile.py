@@ -8,7 +8,7 @@ def find_entry_in_list(
     cur_dpt: int = 0,
     nr_dict: dict = {},
     current_idx: int = -1,
-):
+) -> None:
     cur_dpt += 1
     # Making sure not to combine the same items when recursing
     for idx, item in enumerate(in_list):
@@ -34,11 +34,11 @@ def find_entry_in_list(
                 )
             elif current_sum == searching_nr:
                 print(f"Found it! {nr_dict}")
-                return nr_dict
+                # return nr_dict
             else:
                 nr_dict.pop(cur_dpt)
 
     # return nr_dict
 
 
-print(find_entry_in_list(searching_nr=2020, in_list=tst_input, no_combine=2))
+# print(find_entry_in_list(searching_nr=2020, in_list=tst_input, no_combine=2))

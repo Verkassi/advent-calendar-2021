@@ -1,4 +1,5 @@
 import collections
+from typing import Any, Tuple
 
 from puzzle_input import aoc_input, tst_input
 
@@ -52,7 +53,7 @@ def solve_puzzle_2(in_list: list) -> None:
     # CO2: 10
     # LSR: 230
 
-    def find_commons(inputlist: list) -> int:
+    def find_commons(inputlist: list) -> Tuple[Any, Any]:
         counter = collections.Counter(inputlist)
         commons = counter.most_common()
         # Check if entries are equal

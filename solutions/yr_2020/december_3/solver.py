@@ -1,10 +1,10 @@
 import math
-from typing import List
+from typing import List, Tuple
 
 from puzzle_input import aoc_input, tst_input
 
 
-def traverse_slope(in_list: list, x_step: int, y_step: int):
+def traverse_slope(in_list: list, x_step: int, y_step: int) -> Tuple(int, int):
     no_trees = 0
     no_opens = 0
     iter_list = [item for idx, item in enumerate(in_list) if idx % y_step == 0]
