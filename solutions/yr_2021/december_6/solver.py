@@ -1,12 +1,16 @@
-from puzzle_input import aoc_input, tst_input
 from copy import deepcopy
 from time import time
+
+from puzzle_input import aoc_input, tst_input
+
 
 def transform_input(raw_puzzle_in: str):
     return raw_puzzle_in
 
 
-def calc_no_fish_after_days(fish_list: list, no_days: int, debug_print=False) -> int:
+def calc_no_fish_after_days(
+    fish_list: list, no_days: int, debug_print=False
+) -> int:
     try:
         start_time = time()
         lantern_fish_list = deepcopy(fish_list)
@@ -24,7 +28,7 @@ def calc_no_fish_after_days(fish_list: list, no_days: int, debug_print=False) ->
         }
 
         for input_fish in lantern_fish_list:
-            fish_birth_cntr[str(input_fish)]+=1
+            fish_birth_cntr[str(input_fish)] += 1
 
         for day in range(no_days):
             birth_placeholder = fish_birth_cntr["0"]
@@ -41,7 +45,7 @@ def calc_no_fish_after_days(fish_list: list, no_days: int, debug_print=False) ->
 
         no_fish = 0
         for value in fish_birth_cntr.values():
-            no_fish+=value
+            no_fish += value
     finally:
         end_time = time()
         if debug_print:
@@ -50,12 +54,14 @@ def calc_no_fish_after_days(fish_list: list, no_days: int, debug_print=False) ->
     return no_fish
 
 
-def calc_fish_iterative(fish_list: list, no_days: int, debug_print=False) -> int:
+def calc_fish_iterative(
+    fish_list: list, no_days: int, debug_print=False
+) -> int:
     try:
         start_time = time()
 
         fishlist = deepcopy(fish_list)
-        for day in range(1, no_days+1):
+        for day in range(1, no_days + 1):
             no_fish = len(fishlist)
             for i in range(no_fish):
                 if fishlist[i] == 0:
@@ -100,7 +106,9 @@ def solve_puzzle_2(puzzle_in: list, no_days: int) -> None:
     # 5934
 
     print("---------------- PUZZLE TWO SOLUTION ----------------")
-    print(f"Number of Fish: {calc_no_fish_after_days(puzzle_in, no_days, True)}")
+    print(
+        f"Number of Fish: {calc_no_fish_after_days(puzzle_in, no_days, True)}"
+    )
     print("-----------------------------------------------------")
 
 
