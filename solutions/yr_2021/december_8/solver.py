@@ -16,48 +16,17 @@ def transform_input(raw_puzzle_in: str) -> List[Any]:
         for entry in input_helper:
             tmp_lst = []
             tmp_lst[:0] = entry
-            input_list.append(tmp_lst)
+            input_list.append(set(tmp_lst))
 
         output_list = []
         for entry in output_helper:
             tmp_lst = []
             tmp_lst[:0] = entry
-            output_list.append(tmp_lst)
+            output_list.append(set(tmp_lst))
 
         puzzle_return.append([input_list, output_list])
 
     return puzzle_return
-
-
-POSSIBLE_SEGMENTS = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-
-
-def display_segments():
-    segment_dict = {
-        "1": ['c', 'f'],
-        "7": ['a', 'c', 'f'],
-        "4": ['b', 'c', 'd', 'f'],
-        "2": ['a', 'c', 'd', 'e', 'g'],
-        "5": ['a', 'b', 'd', 'f', 'g'],
-        "3": ['a', 'c', 'd', 'f', 'g'],
-        "6": ['a', 'b', 'd', 'e', 'f', 'g'],
-        "9": ['a', 'b', 'c', 'd', 'f', 'g'],
-        "0": ['a', 'b', 'c', 'e', 'f', 'g'],
-        "8": ['a', 'b', 'c', 'd', 'e', 'f', 'g'],
-    }
-    return segment_dict
-
-
-def inverse_display_segments():
-    segment_dict = display_segments()
-    inverse_dict = {}
-    for k, v in segment_dict.items():
-        inv_segments = []
-        for segment in POSSIBLE_SEGMENTS:
-            if segment not in v:
-                inv_segments.append(segment)
-        inverse_dict[k] = inv_segments
-    return inverse_dict
 
 
 def solve_puzzle_1(puzzle_in: list) -> None:
@@ -112,51 +81,47 @@ def solve_puzzle_2(puzzle_in: list) -> None:
         for guess in easy_guess:
             no_chars = len(guess)
             if no_chars == 2:
-                tmp_dict["1"] = sorted(guess)
+                tmp_dict["1"] = guess
             elif no_chars == 3:
-                tmp_dict["7"] = sorted(guess)
+                tmp_dict["7"] = guess
             elif no_chars == 4:
-                tmp_dict["4"] = sorted(guess)
+                tmp_dict["4"] = guess
             elif no_chars == 7:
-                tmp_dict["8"] = sorted(guess)
-
-        references = {
-            "a": list(set(tmp_dict["7"]) - set(tmp_dict["1"]))[0],
-        }
+                tmp_dict["8"] = guess
 
         # Then the fivers
         five_guess = [entry for entry in single_slice_smp if len(entry) == 5]
         for guess in five_guess:
-            if len(set(tmp_dict["8"]) - set(tmp_dict["1"]) - set(guess)) == 2:
-                tmp_dict["3"] = sorted(guess)
-            elif len(set(tmp_dict["8"]) - set(tmp_dict["7"]) - set(tmp_dict["4"]) - set(guess)) == 1:
-                tmp_dict["5"] = sorted(guess)
-            elif len(set(tmp_dict["8"]) - set(tmp_dict["7"]) - set(tmp_dict["4"]) - set(guess)) == 0:
-                tmp_dict["2"] = sorted(guess)
+            if len(tmp_dict["8"] - tmp_dict["1"] - guess) == 2:
+                tmp_dict["3"] = guess
+            elif len(tmp_dict["8"] - tmp_dict["7"] - tmp_dict["4"] - guess) == 1:
+                tmp_dict["5"] = guess
+            elif len(tmp_dict["8"] - tmp_dict["7"] - tmp_dict["4"] - guess) == 0:
+                tmp_dict["2"] = guess
             else:
                 raise ValueError(f"COULD NOT DECODE FIVE GUESS: {guess}")
 
         # Then the length six, for which we can do subtractions
         six_guess = [entry for entry in single_slice_smp if len(entry) == 6]
         for guess in six_guess:
-            sub_set = set(tmp_dict["8"]) - set(tmp_dict["7"])
-            sub_sub_set = sub_set - set(tmp_dict["4"])
-            # Find 6 -> 8 - 6 == 1 (c) -7 = 0
-            if len(sub_set - set(guess)) == 0:
-                tmp_dict["6"] = sorted(guess)
-            # Find 9 -> 8 - 9 == 1 (e) -7 = 1 - 4 = 1
-            elif len(sub_sub_set - set(guess)) == 1:
-                tmp_dict["9"] = sorted(guess)
-            # Find 0 -> 8 - 0 == 1 (d) -7 = 1 - 4 = 0
-            elif len(sub_sub_set - set(guess)) == 0:
-                tmp_dict["0"] = sorted(guess)
+            sub_set = tmp_dict["8"] - tmp_dict["7"]
+            sub_sub_set = sub_set - tmp_dict["4"]
+            # Find 6 -> 8 - 7 - 6 = 0 (c)
+            if len(tmp_dict["8"] - tmp_dict["7"] - guess) == 0:
+                tmp_dict["6"] = guess
+            # Find 9 -> 8 - 7 - 4 - 9 = 1 (e)
+            elif len(tmp_dict["8"] - tmp_dict["7"] - tmp_dict["4"] - guess) == 1:
+                tmp_dict["9"] = guess
+            # Find 0 -> 8 - 7 - 4 - 0 = 1 (d)
+            elif len(tmp_dict["8"] - tmp_dict["7"] - tmp_dict["4"] - guess) == 0:
+                tmp_dict["0"] = guess
             else:
                 raise ValueError(f"COULD NOT DECODE SIX GUESS: {guess}") 
 
         match_dict = {}
         for k,v in tmp_dict.items():
             # print(k,"".join(v))
-            match_dict[("".join(v))] = k
+            match_dict[("".join(sorted(v)))] = k
 
         return int("".join([match_dict["".join(sorted(entry))] for entry in single_slice_out]))
 
