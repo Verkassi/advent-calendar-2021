@@ -1,11 +1,11 @@
 from copy import deepcopy
-from typing import Any, List
+from pathlib import Path
 
 def read_input(is_test: bool = False):
     if is_test:
-        input_file = "test_input.txt"
+        input_file = Path("inputs/test.txt")
     else:
-        input_file = "full_input.txt"
+        input_file = Path("inputs/actual.txt")
 
     with open(input_file) as file:
         content = file.readlines()
