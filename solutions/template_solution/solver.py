@@ -8,7 +8,7 @@ def read_input(is_test: bool = False):
         input_file = Path("inputs/actual.txt")
 
     with open(input_file) as file:
-        content = file.readlines()
+        content = file.read().splitlines()
     return content
 
 def solve_puzzle_1(puzzle_in: list) -> None:
