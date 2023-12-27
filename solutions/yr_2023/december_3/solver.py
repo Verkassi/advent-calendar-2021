@@ -67,11 +67,37 @@ def has_surrounding_symbol(positions_to_check: list[tuple], puzzle_grid: list[li
     return (surrounding_symbols - false_positives) == set()
 
 def find_gear_ratio(puzzle_grid: list[list[str]], positions_to_check: list[tuple]):
-    row_pos = 0
+
+    def _find_whole_nr(puzzle_grid: list[list[str]], found_digit_row: int, found_digit_position_in_row: int):
+        row_numbers = list()
+        digit_positions = set()
+        for i, value in enumerate(puzzle_grid[found_digit_row]):
+            if value.isdigit():
+                digit_positions.add(i)
+            else:
+                row_numbers.append(digit_positions)
+                digit_positions = set()
+        for found_number in row_numbers:
+            if found_digit_position_in_row in found_number:
+                number = [ puzzle_grid[found_digit_row][i] for i in sorted(found_number) ]
+                return ''.join(number)
+        return 0
+
+    ratio_numbers = set()
     for position_to_check in positions_to_check:
         if puzzle_grid[position_to_check[1]][position_to_check[0]].isdigit():
-            print(f"isdigit: {puzzle_grid[position_to_check[1]][position_to_check[0]]}")
-            # Write function that checks the row of the digit found to the left and right for the whole number
+            whole_number = _find_whole_nr(
+                puzzle_grid=puzzle_grid,
+                found_digit_row=position_to_check[1],
+                found_digit_position_in_row=position_to_check[0]
+            )
+            print(f"adding {whole_number}")
+            ratio_numbers.add(int(whole_number))
+    if len(ratio_numbers) == 2:
+        ratio_numbers = list(ratio_numbers)
+        return ratio_numbers[0] * ratio_numbers[1]
+    else:
+        return 0
 
 def solve_puzzle_1(puzzle_in: list) -> None:
     puzzle = deepcopy(puzzle_in)
@@ -116,9 +142,7 @@ def solve_puzzle_2(puzzle_in: list) -> None:
     # Convert engine schematic to a grid
     puzzle_grid, max_lenght, max_width = convert_input_to_grid_with_size(puzzle_rows=puzzle)
 
-    # results
-    with_surrounding_symbol = list()
-    without_surrounding_symbol = list()
+    gear_ratios = list()
 
     for i, row in enumerate(puzzle_grid):
         row_pos = 0
@@ -136,15 +160,16 @@ def solve_puzzle_2(puzzle_in: list) -> None:
                     puzzle_grid=puzzle_grid,
                     positions_to_check=possible_checks
                 )
+                gear_ratios.append(gear_ratio)
             row_pos += 1
 
     print("---------------- PUZZLE TWO SOLUTION ----------------")
-    print(f"{puzzle}")
+    print(f"{sum(gear_ratios)}")
     print("-----------------------------------------------------")
 
 
 if __name__ == "__main__":
     transfrmd_inp_p1 = read_input(is_test=False)
     solve_puzzle_1(transfrmd_inp_p1)
-    transfrmd_inp_p2 = read_input(is_test=True)
+    transfrmd_inp_p2 = read_input(is_test=False)
     solve_puzzle_2(transfrmd_inp_p2)
