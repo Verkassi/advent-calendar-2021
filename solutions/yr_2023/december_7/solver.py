@@ -148,6 +148,11 @@ def solve_puzzle_2(puzzle_in: list) -> None:
     }
     numbers_to_cards = {v: k for k, v in cards_to_number.items()}
 
+
+    ## REREAD ASSIGNMENT:
+    ## J cards can pretend to be whatever card is best for the purpose of determining hand type;
+
+
     # Convert all cards to numbers
     cards_all_numbers = [ [ cards_to_number[card] for card in hand ] for hand in hands ]
     # print(cards_all_numbers)
