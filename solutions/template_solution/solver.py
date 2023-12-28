@@ -34,7 +34,7 @@ def solve_puzzle_1(puzzle_in: list) -> None:
     print("---------------- PUZZLE ONE SOLUTION ----------------")
     print(puzzle)
     print("------------------- RUN DURATION --------------------")
-    print('Execution time:', st - et, 'seconds')
+    print('Execution time:', round(st - et, 2), 'seconds')
     print("-----------------------------------------------------")
 
 
@@ -52,7 +52,7 @@ def solve_puzzle_2(puzzle_in: list) -> None:
     print("---------------- PUZZLE TWO SOLUTION ----------------")
     print(puzzle)
     print("------------------- RUN DURATION --------------------")
-    print('Execution time:', st - et, 'seconds')
+    print('Execution time:', round(st - et, 2), 'seconds')
     print("-----------------------------------------------------")
 
 
