@@ -42,19 +42,19 @@ def sort_hand_types(hands: list):
         card_occurances = Counter(cards).values()
 
         if {1} == set(card_occurances):
-            return "High card"
+            return "High card" # Wordt pair
         elif 5 in card_occurances:
-            return "Five of a kind"
+            return "Five of a kind" # Stays
         elif 4 in card_occurances:
-            return "Four of a kind"
+            return "Four of a kind" # Wordt Five
         elif (3 in card_occurances) and (2 in card_occurances):
-            return "Full house"
+            return "Full house" # Wordt Five
         elif 3 in card_occurances:
-            return "Three of a kind"
+            return "Three of a kind" # Wordt Four
         elif 2 in Counter(card_occurances).values():
-            return "Two pair"
+            return "Two pair" # Wordt Full house of Four als een joker pair
         elif 2 in card_occurances:
-            return "One pair"
+            return "One pair" # Wordt Three
         else:
             raise ValueError("Can't determine what type of hand this is!")
 
