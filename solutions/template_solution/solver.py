@@ -1,5 +1,6 @@
 from copy import deepcopy
 from pathlib import Path
+from time import time
 
 def read_input(is_test: bool = False, split_lines: bool = True):
     if is_test:
@@ -20,18 +21,38 @@ def convert_input(is_test: bool = False, split_lines: bool = True):
     return input_data
 
 def solve_puzzle_1(puzzle_in: list) -> None:
+    # get the start time
+    st = time.time()
+
+    # Solve Puzzle
     puzzle = deepcopy(puzzle_in)
 
+
+    # get the end time
+    et = time.time()
+
     print("---------------- PUZZLE ONE SOLUTION ----------------")
-    print(f"{puzzle}")
+    print(puzzle)
+    print("------------------- RUN DURATION --------------------")
+    print('Execution time:', elapsed_time, 'seconds')
     print("-----------------------------------------------------")
 
 
 def solve_puzzle_2(puzzle_in: list) -> None:
+    # get the start time
+    st = time.time()
+
+    # Solve Puzzle
     puzzle = deepcopy(puzzle_in)
 
+
+    # get the end time
+    et = time.time()
+
     print("---------------- PUZZLE TWO SOLUTION ----------------")
-    print(f"{puzzle}")
+    print(puzzle)
+    print("------------------- RUN DURATION --------------------")
+    print('Execution time:', elapsed_time, 'seconds')
     print("-----------------------------------------------------")
 
 
