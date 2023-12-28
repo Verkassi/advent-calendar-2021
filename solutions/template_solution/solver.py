@@ -22,37 +22,37 @@ def convert_input(is_test: bool = False, split_lines: bool = True):
 
 def solve_puzzle_1(puzzle_in: list) -> None:
     # get the start time
-    st = time.time()
+    st = time()
 
     # Solve Puzzle
     puzzle = deepcopy(puzzle_in)
 
 
     # get the end time
-    et = time.time()
+    et = time()
 
     print("---------------- PUZZLE ONE SOLUTION ----------------")
     print(puzzle)
     print("------------------- RUN DURATION --------------------")
-    print('Execution time:', elapsed_time, 'seconds')
+    print('Execution time:', st - et, 'seconds')
     print("-----------------------------------------------------")
 
 
 def solve_puzzle_2(puzzle_in: list) -> None:
     # get the start time
-    st = time.time()
+    st = time()
 
     # Solve Puzzle
     puzzle = deepcopy(puzzle_in)
 
 
     # get the end time
-    et = time.time()
+    et = time()
 
     print("---------------- PUZZLE TWO SOLUTION ----------------")
     print(puzzle)
     print("------------------- RUN DURATION --------------------")
-    print('Execution time:', elapsed_time, 'seconds')
+    print('Execution time:', st - et, 'seconds')
     print("-----------------------------------------------------")
 
 
